@@ -1,10 +1,14 @@
 from flask import Flask, request, Response, redirect
 from uploader import upload
-from os import listdir
+from os import listdir, mkdir
 from sys import platform
 import config
 from werkzeug.utils import secure_filename
 
+
+if 'links' not in listdir():
+    mkdir('links')
+    
 
 def get_path(*path):
     if platform == 'win32':
