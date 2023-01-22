@@ -42,7 +42,7 @@ def index():
 
 @app.route('/upload', methods=['POST', 'GET'])
 def upload_flask():
-    if request.method == 'POST' and request.files['file'].filename != '':
+    if request.method == 'POST' and request.files['file'].filename != '' and request.files['file'].filename != '.htaccess':
         id = static(upload(request.files['file'].stream.read(), secure_filename(request.files['file'].filename))).x
         return redirect(f'/uploaded?id={id}')
     else:
